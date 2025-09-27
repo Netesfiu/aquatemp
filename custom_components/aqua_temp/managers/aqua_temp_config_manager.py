@@ -27,6 +27,8 @@ from ..common.consts import (
     CONFIG_HVAC_MODES,
     CONFIG_HVAC_SET,
     CONFIGURATION_FILE,
+    CONF_MIN_TEMP_OVERRIDE,
+    CONF_MAX_TEMP_OVERRIDE,
     DEFAULT_ENTRY_ID,
     DEFAULT_NAME,
     DOMAIN,
@@ -268,6 +270,20 @@ class AquaTempConfigManager:
         result = self._api_config.get(str(param))
 
         return result
+
+    def get_min_temp_override(self) -> float | None:
+        """Get the minimum temperature override value from entry data."""
+        if self._entry is None:
+            return None
+        
+        return self._entry.data.get(CONF_MIN_TEMP_OVERRIDE)
+
+    def get_max_temp_override(self) -> float | None:
+        """Get the maximum temperature override value from entry data."""
+        if self._entry is None:
+            return None
+        
+        return self._entry.data.get(CONF_MAX_TEMP_OVERRIDE)
 
     def get_debug_data(self) -> dict:
         data = self._config_data.to_dict()

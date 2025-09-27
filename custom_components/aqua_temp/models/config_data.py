@@ -5,9 +5,9 @@ from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.helpers import selector
 
 from ..common.api_types import API_TYPE_LEGACY, API_TYPES, APIType
-from ..common.consts import CONF_API_TYPE, CONF_TITLE, DEFAULT_NAME
+from ..common.consts import CONF_API_TYPE, CONF_TITLE, DEFAULT_NAME, CONF_MIN_TEMP_OVERRIDE, CONF_MAX_TEMP_OVERRIDE
 
-DATA_KEYS = [CONF_USERNAME, CONF_PASSWORD]
+DATA_KEYS = [CONF_USERNAME, CONF_PASSWORD, CONF_MIN_TEMP_OVERRIDE, CONF_MAX_TEMP_OVERRIDE]
 
 
 class ConfigData:
@@ -80,6 +80,12 @@ class ConfigData:
                     translation_key=CONF_API_TYPE,
                 )
             ),
+            vol.Optional(
+                CONF_MIN_TEMP_OVERRIDE, default=user_input.get(CONF_MIN_TEMP_OVERRIDE)
+            ): vol.Any(vol.Coerce(float), None),
+            vol.Optional(
+                CONF_MAX_TEMP_OVERRIDE, default=user_input.get(CONF_MAX_TEMP_OVERRIDE)
+            ): vol.Any(vol.Coerce(float), None),
         }
 
         schema = vol.Schema(new_user_input)

@@ -23,6 +23,8 @@ HTTP_HEADER_X_TOKEN = "x-token"
 
 CONF_TITLE = "title"
 CONF_API_TYPE = "api_type"
+CONF_MIN_TEMP_OVERRIDE = "min_temp_override"
+CONF_MAX_TEMP_OVERRIDE = "max_temp_override"
 
 PRODUCT_IDS = [
     "1245226668902080512",  # Hitemp

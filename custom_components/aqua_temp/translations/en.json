@@ -8,7 +8,9 @@
           "title": "Title",
           "username": "Username",
           "password": "Password",
-          "api_type": "API type"
+          "api_type": "API type",
+          "min_temp_override": "Minimum Temperature Override (°C)",
+          "max_temp_override": "Maximum Temperature Override (°C)"
         }
       }
     },
@@ -26,7 +28,9 @@
           "title": "Title",
           "username": "Username",
           "password": "Password",
-          "api_type": "API type"
+          "api_type": "API type",
+          "min_temp_override": "Minimum Temperature Override (°C)",
+          "max_temp_override": "Maximum Temperature Override (°C)"
         }
       }
     },

@@ -162,11 +162,23 @@ class AquaTempCoordinator(DataUpdateCoordinator):
         return current_temperature
 
     def get_device_minimum_temperature(self, device_code: str) -> float | None:
+        # Check for override value first
+        override_min_temp = self._config_manager.get_min_temp_override()
+        if override_min_temp is not None:
+            return override_min_temp
+        
+        # Fall back to device API value
         minimum_temperature = self._api.get_device_minimum_temperature(device_code)
 
         return minimum_temperature
 
     def get_device_maximum_temperature(self, device_code: str) -> float | None:
+        # Check for override value first
+        override_max_temp = self._config_manager.get_max_temp_override()
+        if override_max_temp is not None:
+            return override_max_temp
+        
+        # Fall back to device API value
         maximum_temperature = self._api.get_device_maximum_temperature(device_code)
 
         return maximum_temperature
